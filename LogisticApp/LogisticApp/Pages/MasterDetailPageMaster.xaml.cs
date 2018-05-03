@@ -33,19 +33,28 @@ namespace LogisticApp.Pages
             {
                 MenuItems = new ObservableCollection<MasterDetailPageMenuItem>(new[]
                 {
-                    new MasterDetailPageMenuItem { Id = 0, Title = "Page 1" },
-                    new MasterDetailPageMenuItem { Id = 1, Title = "Page 2" },
-                    new MasterDetailPageMenuItem { Id = 2, Title = "Page 3" },
-                    new MasterDetailPageMenuItem {
-                        Id = 3,
-                        Title = "Page 4",
+                    new MasterDetailPageMenuItem { Id = 0,
+                        Title = "Inicio",
+                        Icon = "Glasser.png",
                         TargetType = typeof(MasterDetailPageDetail)
                     },
-                    new MasterDetailPageMenuItem {
-                        Id = 4,
-                        Title = "Page 5",
-                        TargetType = typeof(Pagina2)
+                    new MasterDetailPageMenuItem { Id = 1,
+                        Title = "Logística",
+                        Icon = "logistica.png",
+                        TargetType = typeof(MainLogistica)
                     },
+                    new MasterDetailPageMenuItem { Id = 2,
+                        Title = "Inventario",
+                        Icon = "inventario.png",
+                        TargetType = typeof(MainInventario)
+                    },
+                    new MasterDetailPageMenuItem { Id = 2,
+                        Title = "Salir",
+                        Icon = "cerrar",
+                        TargetType = typeof(Salir)
+                    },
+
+
                 });
             }
             

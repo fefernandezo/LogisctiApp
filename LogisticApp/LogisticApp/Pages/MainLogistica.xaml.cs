@@ -9,12 +9,13 @@ using Xamarin.Forms.Xaml;
 
 namespace LogisticApp.Pages
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Pagina2 : ContentPage
-    {
-        public Pagina2()
-        {
-            InitializeComponent();
-        }
-    }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class MainLogistica : ContentPage
+	{
+		public MainLogistica ()
+		{
+			InitializeComponent ();
+            
+		}
+	}
 }

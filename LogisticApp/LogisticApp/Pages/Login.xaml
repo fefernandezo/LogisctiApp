@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LogisticApp.Pages.Login"
+             Title="Iniciar sesión"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout Padding="10"
+                     Spacing="20"
+                     BindingContext="{Binding NewLogin}">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Image
+                Source="Glasseer.png"
+                WidthRequest="90"
+                HeightRequest="90"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Label
+                Text="Iniciar sesión"
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+
+            </StackLayout>
+            <BoxView
+          HeightRequest="3"
+          Color="Black"/>
+            
+            <Entry
+            Text="{Binding User, Mode=TwoWay}"
+            Placeholder="Usuario"
+                x:Name="user"
+            TextColor="Blue"/>
+            
+            <Entry
+            Text="{Binding Password, Mode=TwoWay}"
+            Placeholder="Contraseña"
+                x:Name="password"
+            IsPassword="True"
+            TextColor="Blue"/>
+            
+            <Button 
+            Command="{Binding LoginCommand}"
+            Text="Ingresar"
+            TextColor="White"
+            BackgroundColor="Green"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+            <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center"
+                     Padding="0,20,0,0">
+                <Label
+                Text="Recordar cuenta"
+                TextColor="Blue"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center"/>
+                <Switch
+                 IsToggled="{Binding IsRemembered, Mode=TwoWay}"
+                HorizontalOptions="End"
+                    x:Name="switchremember"
+                VerticalOptions="Center">
+                </Switch>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+        
+   
+ 
+</ContentPage>
