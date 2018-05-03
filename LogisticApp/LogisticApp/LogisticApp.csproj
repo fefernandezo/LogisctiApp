@@ -15,6 +15,9 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\Pagina2.xaml.cs">
+      <DependentUpon>Pagina2.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\MasterDetailPageMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>

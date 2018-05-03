@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using LogisticApp.Pages;
 using Xamarin.Forms;
 
 namespace LogisticApp
@@ -13,7 +13,7 @@ namespace LogisticApp
 		{
 			InitializeComponent();
 
-			MainPage = new LogisticApp.MainPage();
+			MainPage = new MasterDetailPage1();
 		}
 
 		protected override void OnStart ()

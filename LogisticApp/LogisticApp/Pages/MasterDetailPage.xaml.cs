@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace LogisticApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MasterDetailPage : MasterDetailPage
+    public partial class MasterDetailPage1 : MasterDetailPage
     {
-        public MasterDetailPage()
+        public MasterDetailPage1()
         {
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;

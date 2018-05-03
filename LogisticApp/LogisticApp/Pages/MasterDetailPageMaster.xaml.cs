@@ -36,8 +36,16 @@ namespace LogisticApp.Pages
                     new MasterDetailPageMenuItem { Id = 0, Title = "Page 1" },
                     new MasterDetailPageMenuItem { Id = 1, Title = "Page 2" },
                     new MasterDetailPageMenuItem { Id = 2, Title = "Page 3" },
-                    new MasterDetailPageMenuItem { Id = 3, Title = "Page 4" },
-                    new MasterDetailPageMenuItem { Id = 4, Title = "Page 5" },
+                    new MasterDetailPageMenuItem {
+                        Id = 3,
+                        Title = "Page 4",
+                        TargetType = typeof(MasterDetailPageDetail)
+                    },
+                    new MasterDetailPageMenuItem {
+                        Id = 4,
+                        Title = "Page 5",
+                        TargetType = typeof(Pagina2)
+                    },
                 });
             }
             
