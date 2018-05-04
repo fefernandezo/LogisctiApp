@@ -50,6 +50,7 @@
             BackgroundColor="Green"
             HorizontalOptions="Center"
             VerticalOptions="Center"/>
+            <ActivityIndicator IsRunning="{Binding IsRunning}"></ActivityIndicator>
             <StackLayout Orientation="Horizontal"
                      HorizontalOptions="Center"
                      Padding="0,20,0,0">
@@ -60,11 +61,13 @@
                 VerticalOptions="Center"/>
                 <Switch
                  IsToggled="{Binding IsRemembered, Mode=TwoWay}"
+                    IsEnabled="True"
                 HorizontalOptions="End"
                     x:Name="switchremember"
                 VerticalOptions="Center">
                 </Switch>
             </StackLayout>
+            
 
 
         </StackLayout>
