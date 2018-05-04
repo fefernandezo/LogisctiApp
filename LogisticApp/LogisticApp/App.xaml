@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LogisticApp.App">
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:infra="clr-namespace:LogisticApp.Infraestructure;assembly=LogisticApp"
+			 x:Class="LogisticApp.App">
 	<Application.Resources>
 
 		<!-- Application resource dictionary -->
-
+		<ResourceDictionary>
+			<infra:InstanceLocator x:Key="Locator" x:Name="Locator" x:Uid="Locator"></infra:InstanceLocator>
+            
+		</ResourceDictionary>
 	</Application.Resources>
+	
 </Application>
+	

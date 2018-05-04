@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LogisticApp.Pages.MasterDetailPageMaster"
+             Title="Master">
+  <StackLayout>
+    <ListView x:Name="MenuItemsListView"
+              SeparatorVisibility="Default"
+              HasUnevenRows="true"
+              BackgroundColor="#efefef"
+              ItemsSource="{Binding MenuItems}">
+      <ListView.Header>
+        <Grid BackgroundColor="#03A9F4">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="5"/>
+          </Grid.RowDefinitions>
+          <Label
+              Grid.Column="1"
+              Grid.Row="1"
+              Text="Logística Glasser"
+              FontSize="30"
+              Style="{DynamicResource SubtitleStyle}"/>
+        </Grid>
+      </ListView.Header>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Source="{Binding Icon}"
+                                WidthRequest="50"
+                                HeightRequest="50"/>
+                            <Label
+                                Grid.Column="1"
+                                VerticalOptions="FillAndExpand" 
+                                VerticalTextAlignment="Center" 
+                                Text="{Binding Title}" 
+                                FontSize="24"/>
+                        </Grid>
+            
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>
