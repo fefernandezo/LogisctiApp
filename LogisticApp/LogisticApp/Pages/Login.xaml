@@ -10,9 +10,9 @@
                      BindingContext="{Binding NewLogin}">
             <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                 <Image
-                Source="Glasseer.png"
-                WidthRequest="90"
-                HeightRequest="90"
+                Source="LogoGlasser.png"
+                WidthRequest="120"
+                HeightRequest="120"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
             </StackLayout>

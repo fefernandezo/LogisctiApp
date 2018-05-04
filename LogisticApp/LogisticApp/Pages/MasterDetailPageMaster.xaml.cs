@@ -35,22 +35,22 @@ namespace LogisticApp.Pages
                 {
                     new MasterDetailPageMenuItem { Id = 0,
                         Title = "Inicio",
-                        Icon = "Glasser.png",
+                        Icon = "LogoGlasser.png",
                         TargetType = typeof(MasterDetailPageDetail)
                     },
                     new MasterDetailPageMenuItem { Id = 1,
                         Title = "Logística",
-                        Icon = "logistica.png",
+                        Icon = "logistic.png",
                         TargetType = typeof(MainLogistica)
                     },
                     new MasterDetailPageMenuItem { Id = 2,
                         Title = "Inventario",
-                        Icon = "inventario.png",
+                        Icon = "inventory.png",
                         TargetType = typeof(MainInventario)
                     },
                     new MasterDetailPageMenuItem { Id = 2,
                         Title = "Salir",
-                        Icon = "cerrar",
+                        Icon = "cerrar.png",
                         TargetType = typeof(Salir)
                     },
 
