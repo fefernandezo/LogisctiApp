@@ -2,7 +2,7 @@
 
 namespace LogisticApp.Interfaces
 {
-    interface IConfig
+    public interface IConfig
     {
         string DirectoryDB { get; }
 
