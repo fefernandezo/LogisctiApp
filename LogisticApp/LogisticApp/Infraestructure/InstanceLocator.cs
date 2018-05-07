@@ -7,9 +7,16 @@ namespace LogisticApp.Infraestructure
     {
         public MainViewModel Main { get; set; }
 
+        public InicioViewModel Inicio { get; set; }
+        
+
         public InstanceLocator()
         {
             Main = new MainViewModel();
+
+            Inicio = new InicioViewModel();
+
+           
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Xml.Linq;
 using System.Linq;
 using System.ComponentModel;
+using LogisticApp.Models;
 
 namespace LogisticApp.ViewModels
 {
@@ -18,6 +19,7 @@ namespace LogisticApp.ViewModels
         private DialogService dialogService;
         private WSLservice wSLservice;
         private bool isrunning;
+        private DataService dataService;
 
 
         #endregion
@@ -59,6 +61,7 @@ namespace LogisticApp.ViewModels
             navigationService = new NavigationService();
             dialogService = new DialogService();
             wSLservice = new WSLservice();
+            dataService = new DataService();
         } 
         #endregion
 
@@ -80,14 +83,18 @@ namespace LogisticApp.ViewModels
             IsRunning = true;
             var response = await wSLservice.Login(User, Password);
             IsRunning = false;
+            response.IsRemember = IsRemembered;
+            
 
             if(!response.IsSuccess)
             {
                 await dialogService.Showmessage("Error", response.Messagge);
                 return;
             }
-
-            navigationService.SetMainPage();
+            dataService.InsertUser(response);
+            
+            
+            navigationService.SetMainPage(response);
 
             
             

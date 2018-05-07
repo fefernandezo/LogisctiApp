@@ -2,8 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LogisticApp.Pages.MasterDetailPageDetail"
-             Title="Inicio">
-  <StackLayout Padding="10">
-    <Label Text="This is a detail page. To get the 'triple' line icon on each platform add a icon to each platform and update the 'Master' page with an Icon that references it."/>
-  </StackLayout>
+             Title="Inicio"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+  <StackLayout 
+      BindingContext="{Binding UserLoged}"
+      Padding="10"
+               VerticalOptions="CenterAndExpand"
+               Spacing="10"
+               >
+            <Label Text="Bienvenid@"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+        <Label Text="{Binding FullName}"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+    </StackLayout>
 </ContentPage>

@@ -3,7 +3,6 @@ using LogisticApp.Models;
 using SQLite.Net;
 using SQLiteNetExtensions.Extensions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 
@@ -23,13 +22,15 @@ namespace LogisticApp.Data
             connection = new SQLiteConnection(config.Platform,
                 System.IO.Path.Combine(config.DirectoryDB, "LogisticApp.db3"));
             connection.CreateTable<LoginResult>();
-            
+            connection.CreateTable<RutasResult>();
+
         }
 
         public void Insert<T>(T model)
         {
             connection.Insert(model);
         }
+
         public void Update<T>(T model)
         {
             connection.Update(model);
@@ -46,7 +47,7 @@ namespace LogisticApp.Data
             {
                 return connection.GetAllWithChildren<T>().FirstOrDefault();
 
-
+               
 
             }
             else
@@ -60,7 +61,7 @@ namespace LogisticApp.Data
         {
             if (WithChildren)
             {
-                return GetAllWithChildren<T>().FirstOrDefault();
+                return connection.GetAllWithChildren<T>().FirstOrDefault();
             }
             else
             {

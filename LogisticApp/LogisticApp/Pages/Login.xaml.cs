@@ -19,6 +19,7 @@ namespace LogisticApp.Pages
             
             InitializeComponent();
             
+            
 
         }
 

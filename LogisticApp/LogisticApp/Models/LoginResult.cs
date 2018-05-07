@@ -1,4 +1,6 @@
 ﻿using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
+using System.Collections.Generic;
 
 namespace LogisticApp.Models
 {
@@ -18,6 +20,9 @@ namespace LogisticApp.Models
         public string Correo { get; set; }
 
         public string Messagge { get; set; }
+
+        public bool IsRemember { get; set; }
+
 
         public override int GetHashCode()
         {

@@ -1,4 +1,5 @@
 ﻿using LogisticApp.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,8 @@ namespace LogisticApp.Services
                         Correo = doc.Descendants(ns + "WSL_User").Elements(ns + "Correo").First().Value,
                         Password = password,
                         UserName = username,
-                        UserId = 1,
+                        UserId = Convert.ToInt32(doc.Descendants(ns + "WSL_User").Elements(ns + "Id_tab").First().Value),
+                        IsRemember = false,
                     
                     };
                     
@@ -63,6 +65,58 @@ namespace LogisticApp.Services
                     Messagge = ex.Message,
 
                 };
+            }
+        }
+
+        public async Task<List<RutasResult>> GetRutas(int UserId)
+        {
+            List<RutasResult> Rutaresult = new List<RutasResult>();
+            try
+            {
+
+                string BaseUri = "http://e.phglass.cl/ServiciosWeb/WSlogistica.asmx/LoginApp?operario=";
+                string Uri = UserId.ToString();
+
+                Uri geturi = new Uri(BaseUri + Uri);
+                HttpClient client = new HttpClient();
+                HttpResponseMessage responseGet = await client.GetAsync(geturi);
+               
+
+                
+                
+
+                if(!responseGet.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                string response = await responseGet.Content.ReadAsStringAsync();
+                XDocument doc = XDocument.Parse(response);
+                XNamespace ns = "http://www.phglass.cl/";
+                var XMLruta = doc.Descendants(ns + "WSL_Rutas");
+                
+                foreach(var item in XMLruta)
+                {
+                    var ruta = new RutasResult {
+                        IdRuta = Convert.ToInt32(item.Element("Id").Value),
+                        Nombre = item.Element("Nombre").Value,
+                        CodBodega = item.Element("CodBodega").Value,
+                        Descripcion = item.Element("Descripcion").Value,
+                        HasRoute = true,
+
+                    };
+                    Rutaresult.Add(ruta);
+                }
+
+                return Rutaresult;
+                
+            }
+
+
+            catch 
+            {
+
+                return null;
             }
         }
     }

@@ -61,7 +61,7 @@
                 VerticalOptions="Center"/>
                 <Switch
                  IsToggled="{Binding IsRemembered, Mode=TwoWay}"
-                    IsEnabled="True"
+                    
                 HorizontalOptions="End"
                     x:Name="switchremember"
                 VerticalOptions="Center">
