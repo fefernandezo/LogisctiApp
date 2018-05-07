@@ -1,12 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LogisticApp.Pages.Salir">
+             x:Class="LogisticApp.Pages.Salir"
+             Title="Cerrar sesión"
+             >
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label Text="Está seguro que desea cerrar sesión?"
+                
+                   FontSize="24"
+                   FontAttributes="Bold"
+                HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+            <Button
+                Text="Aceptar"
+                TextColor="White"
+                BackgroundColor="Red"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="ButtonClicked"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -49,7 +49,7 @@ namespace LogisticApp.Pages
                         TargetType = typeof(MainInventario)
                     },
                     new MasterDetailPageMenuItem { Id = 2,
-                        Title = "Salir",
+                        Title = "Cerrar Sesión",
                         Icon = "cerrar.png",
                         TargetType = typeof(Salir)
                     },

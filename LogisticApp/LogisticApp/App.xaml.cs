@@ -5,22 +5,48 @@ using System.Text;
 using LogisticApp.Pages;
 using Xamarin.Forms;
 using LogisticApp.Infraestructure;
+using LogisticApp.Services;
+using LogisticApp.Models;
 
 namespace LogisticApp
 {
 	public partial class App : Application
 	{
-		#region Propiedaeds
+		#region Propiedades
 		public static NavigationPage Navigator { get; internal set; }
-		#endregion
-		public App ()
-		{
-			InitializeComponent();
+        public static LoginResult CurrentUser { get; internal set; }
+        #endregion
 
-            MainPage = new Login();
-		}
+        #region atributos
 
-		protected override void OnStart ()
+        private DataService dataService;
+        #endregion
+
+        #region Constructor
+        public App()
+        {
+            InitializeComponent();
+
+            dataService = new DataService();
+            var User = dataService.GetUser();
+
+            if(User != null && User.IsRemember)
+            {
+                App.CurrentUser = User;
+                MainPage = new MasterDetailPage1();
+            }
+            else
+            {
+                MainPage = new Login();
+            }
+
+
+            
+        }
+        #endregion
+
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
