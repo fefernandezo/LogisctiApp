@@ -28,5 +28,6 @@ namespace LogisticApp.Models
         }
     }
 
+  
     
 }

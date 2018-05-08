@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using LogisticApp.Models;
 using LogisticApp.Pages;
+using LogisticApp.ViewModels;
 
 namespace LogisticApp.Services
 {
@@ -18,8 +20,12 @@ namespace LogisticApp.Services
 
         internal void SetMainPage(LoginResult response)
         {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.LoadUser(response);
+            mainViewModel.Loadrutas(response);
             App.CurrentUser = response;
             App.Current.MainPage = new MasterDetailPage1();
+            
         }
 
         public void Logout()
@@ -34,6 +40,16 @@ namespace LogisticApp.Services
         public LoginResult GetCurrentUser()
         {
             return App.CurrentUser;
+        }
+
+        public async Task Navigate(string pageName)
+        {
+           switch(pageName)
+            {
+                case "IngresoProducto":
+                    await App.Navigator.PushAsync(new IngresoProducto());
+                    break;
+            }
         }
     }
 }

@@ -6,24 +6,15 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using LogisticApp.Services;
-using System.Collections.ObjectModel;
-using LogisticApp.ViewModels;
 
 namespace LogisticApp.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MainInventario : ContentPage
+	public partial class IngresoProducto : ContentPage
 	{
-       
-
-        public MainInventario ()
+		public IngresoProducto ()
 		{
 			InitializeComponent ();
 		}
-
-		
-
-      
-    }
+	}
 }
