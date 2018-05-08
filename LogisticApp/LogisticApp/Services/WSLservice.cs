@@ -74,17 +74,13 @@ namespace LogisticApp.Services
             try
             {
 
-                string BaseUri = "http://e.phglass.cl/ServiciosWeb/WSlogistica.asmx/LoginApp?operario=";
+                string BaseUri = "http://e.phglass.cl/ServiciosWeb/WSlogistica.asmx/Rutas?operario=";
                 string Uri = UserId.ToString();
 
                 Uri geturi = new Uri(BaseUri + Uri);
                 HttpClient client = new HttpClient();
                 HttpResponseMessage responseGet = await client.GetAsync(geturi);
                
-
-                
-                
-
                 if(!responseGet.IsSuccessStatusCode)
                 {
                     return null;
