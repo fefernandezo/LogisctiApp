@@ -74,7 +74,7 @@ namespace LogisticApp.Services
             try
             {
 
-                string BaseUri = "http://e.phglass.cl/ServiciosWeb/WSlogistica.asmx/LoginApp?operario=";
+                string BaseUri = "http://e.phglass.cl/ServiciosWeb/WSlogistica.asmx/Rutas?operario=";
                 string Uri = UserId.ToString();
 
                 Uri geturi = new Uri(BaseUri + Uri);
@@ -98,10 +98,10 @@ namespace LogisticApp.Services
                 foreach(var item in XMLruta)
                 {
                     var ruta = new RutasResult {
-                        IdRuta = Convert.ToInt32(item.Element("Id").Value),
-                        Nombre = item.Element("Nombre").Value,
-                        CodBodega = item.Element("CodBodega").Value,
-                        Descripcion = item.Element("Descripcion").Value,
+                        IdRuta = Convert.ToInt32(item.Element(ns +"Id").Value),
+                        Nombre = item.Element(ns + "Nombre").Value,
+                        CodBodega = item.Element(ns + "CodBodega").Value,
+                        Descripcion = item.Element(ns + "Descripcion").Value,
                         HasRoute = true,
 
                     };

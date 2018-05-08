@@ -6,19 +6,21 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
   <StackLayout 
       BindingContext="{Binding UserLoged}"
-      Padding="10"
-               VerticalOptions="CenterAndExpand"
-               Spacing="10"
-               >
+      VerticalOptions="CenterAndExpand"
+      Padding="8"
+      Spacing="10">
+      
             <Label Text="Bienvenid@"
                    FontSize="18"
                    FontAttributes="Bold"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"/>
-        <Label Text="{Binding FullName}"
-                   FontSize="18"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+      
+            <Label Text="{Binding Fullname}"
+                   FontSize="24"
                    FontAttributes="Bold"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"/>
+        
     </StackLayout>
 </ContentPage>

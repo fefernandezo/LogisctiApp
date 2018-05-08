@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using LogisticApp.Infraestructure;
 using LogisticApp.Services;
 using LogisticApp.Models;
+using LogisticApp.ViewModels;
 
 namespace LogisticApp
 {
@@ -27,11 +28,15 @@ namespace LogisticApp
         {
             InitializeComponent();
 
+
             dataService = new DataService();
             var User = dataService.GetUser();
 
             if(User != null && User.IsRemember)
             {
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.LoadUser(User);
+                mainViewModel.Loadrutas(User);
                 App.CurrentUser = User;
                 MainPage = new MasterDetailPage1();
             }

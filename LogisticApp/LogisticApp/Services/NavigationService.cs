@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using LogisticApp.Models;
 using LogisticApp.Pages;
+using LogisticApp.ViewModels;
 
 namespace LogisticApp.Services
 {
@@ -18,8 +19,12 @@ namespace LogisticApp.Services
 
         internal void SetMainPage(LoginResult response)
         {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.LoadUser(response);
+            mainViewModel.Loadrutas(response);
             App.CurrentUser = response;
             App.Current.MainPage = new MasterDetailPage1();
+            
         }
 
         public void Logout()

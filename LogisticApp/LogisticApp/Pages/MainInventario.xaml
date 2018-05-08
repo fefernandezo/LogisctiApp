@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LogisticApp.Pages.MainInventario"
              Title="Toma de inventario"
-             BindingContext="{Binding Inicio, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <ListView
             ItemsSource="{Binding Rutas}"
