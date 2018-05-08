@@ -21,9 +21,16 @@ namespace LogisticApp.Services
                 string Url = username + "&Password=" + password;
 
                 Uri geturi = new Uri(BaseUri + Url);
-                HttpClient client = new HttpClient();
-                HttpResponseMessage responseGet = await client.GetAsync(geturi);
-                string response = await responseGet.Content.ReadAsStringAsync();
+                HttpClient client1 = new HttpClient();
+
+                HttpResponseMessage responseGet1 = await client1.GetAsync(geturi);
+                
+                if (!responseGet1.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                string response = await responseGet1.Content.ReadAsStringAsync();
 
                 XDocument doc = XDocument.Parse(response);
                 XNamespace ns = "http://www.phglass.cl/";
@@ -62,7 +69,7 @@ namespace LogisticApp.Services
                 return new LoginResult
                 {
                     IsSuccess = false,
-                    Messagge = ex.Message,
+                    Messagge = ex.Message + "en el login",
 
                 };
             }

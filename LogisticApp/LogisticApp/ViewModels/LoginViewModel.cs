@@ -80,10 +80,10 @@ namespace LogisticApp.ViewModels
                         await dialogService.Showmessage("Error", "Debe ingresar una contraseña");
                         return;
                     }
-            IsRunning = true;
-            var response = await wSLservice.Login(User, Password);
-            IsRunning = false;
-            response.IsRemember = IsRemembered;
+                    IsRunning = true;
+                        var response = await wSLservice.Login(User, Password);
+                        IsRunning = false;
+                        response.IsRemember = IsRemembered;
             
 
             if(!response.IsSuccess)

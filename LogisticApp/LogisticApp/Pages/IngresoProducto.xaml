@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LogisticApp.Pages.IngresoProducto"
+             Title="Busqueda de producto"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     BindingContext="{Binding CurrentRoute}">
+            <Label Text=""
+                   TextColor="Black"
+                   FontSize="Large"
+                   HorizontalOptions="Center"></Label>
+            <Button x:Name="BtnManual"
+                    Text="Manual"
+                    BackgroundColor="GreenYellow"
+                    TextColor="White">
+                
+            </Button>
+            <Button x:Name="BtnScanner"
+                    Text="Código de barra"
+                    BackgroundColor="Blue"
+                    TextColor="White"></Button>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

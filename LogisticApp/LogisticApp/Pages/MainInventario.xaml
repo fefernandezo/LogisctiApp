@@ -7,32 +7,38 @@
     <ContentPage.Content>
         <ListView
             ItemsSource="{Binding Rutas}"
-            HasUnevenRows="True">
+            HasUnevenRows="True"
+            >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid Padding="8">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RutaDetailCommand }"></TapGestureRecognizer>
+                            </Grid.GestureRecognizers>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <StackLayout Grid.Column="1">
                                 <Label
-                                    FontAttributes="Bold"
-                                    VerticalOptions="Center"
-                                    TextColor="Black"
-                                    Text="{Binding Nombre}"/>
+									FontSize="Large"
+									FontAttributes="Bold"
+									VerticalOptions="Center"
+									TextColor="Black"
+									Text="{Binding Nombre}"/>
                                 <Label
-                                    TextColor="Blue"
-                                    VerticalOptions="Center"
-                                    Text="{Binding Descripcion}"/>
+									TextColor="Blue"
+									VerticalOptions="Center"
+									Text="{Binding Descripcion}"/>
                             </StackLayout>
                         </Grid>
-                        
+
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
             
+
         </ListView>
     </ContentPage.Content>
 </ContentPage>

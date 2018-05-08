@@ -1,10 +1,15 @@
-﻿using LogisticApp.Models;
+﻿using GalaSoft.MvvmLight.Command;
+using LogisticApp.Models;
+using LogisticApp.Pages;
 using LogisticApp.Services;
+using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace LogisticApp.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel 
     {
         #region Atributos
 
@@ -24,6 +29,8 @@ namespace LogisticApp.ViewModels
 
         public LoginViewModel NewLogin { get; set; }
 
+        public RutasItemViewModel CurrentRoute { get; set; }
+
         
 
 
@@ -42,6 +49,7 @@ namespace LogisticApp.ViewModels
             //creacion de vistas
             NewLogin = new LoginViewModel();
             dialogService = new DialogService();
+            CurrentRoute = new RutasItemViewModel();
 
             
 
@@ -59,9 +67,18 @@ namespace LogisticApp.ViewModels
         }
 
 
+
         #endregion
 
+
+
         #region Metodos
+        public void SetCurrentRuta(RutasItemViewModel rutaIntemViewModel)
+        {
+            CurrentRoute = rutaIntemViewModel;
+        }
+
+
 
         public void LoadUser(LoginResult User)
         {
@@ -88,6 +105,7 @@ namespace LogisticApp.ViewModels
                         IdRuta = ruta.IdRuta,
                         Descripcion = ruta.Descripcion,
                         CodBodega = ruta.CodBodega,
+                       
                     });
                 }
             }

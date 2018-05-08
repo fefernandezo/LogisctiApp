@@ -8,7 +8,8 @@
 		<!-- Application resource dictionary -->
 		<ResourceDictionary>
 			<infra:InstanceLocator x:Key="Locator" x:Name="Locator" x:Uid="Locator"></infra:InstanceLocator>
-			
+
+            
 		</ResourceDictionary>
 	</Application.Resources>
 	
