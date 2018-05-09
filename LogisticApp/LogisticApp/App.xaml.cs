@@ -15,7 +15,10 @@ namespace LogisticApp
 	{
 		#region Propiedades
 		public static NavigationPage Navigator { get; internal set; }
+        public static MasterDetailPage1 Master { get; internal set; }
         public static LoginResult CurrentUser { get; internal set; }
+        
+        
         #endregion
 
         #region atributos

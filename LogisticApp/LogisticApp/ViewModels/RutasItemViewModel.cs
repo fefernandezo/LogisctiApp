@@ -1,17 +1,15 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using LogisticApp.Models;
 using LogisticApp.Services;
 using System;
 using System.Windows.Input;
 
 namespace LogisticApp.ViewModels
 {
-    public class RutasItemViewModel
+    public class RutasItemViewModel : RutasResult
     {
         #region atributos
-        public string Nombre { get; set; }
-        public int IdRuta { get; set; }
-        public string Descripcion { get; set; }
-        public string CodBodega { get; set; }
+        
         private NavigationService navigationService; 
         #endregion
 

@@ -76,6 +76,7 @@ namespace LogisticApp.ViewModels
         public void SetCurrentRuta(RutasItemViewModel rutaIntemViewModel)
         {
             CurrentRoute = rutaIntemViewModel;
+           
         }
 
 

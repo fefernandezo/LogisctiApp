@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LogisticApp.Models;
 using LogisticApp.Pages;
 using LogisticApp.ViewModels;
+using Xamarin.Forms;
 
 namespace LogisticApp.Services
 {
@@ -44,10 +45,13 @@ namespace LogisticApp.Services
 
         public async Task Navigate(string pageName)
         {
+            //App.Master.IsPresented = false;
+
            switch(pageName)
             {
                 case "IngresoProducto":
-                    await App.Navigator.PushAsync(new IngresoProducto());
+                    var page = (Page)Activator.CreateInstance(typeof(IngresoProducto));
+                    await App.Navigator.PushAsync(page);
                     break;
             }
         }
