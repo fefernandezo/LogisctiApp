@@ -45,6 +45,7 @@ namespace LogisticApp.Pages
                 //pop the page and show result
                 Device.BeginInvokeOnMainThread(async() =>
                 {
+                    
                     codigoViewModel.Scanner(result.Text);
                     await Navigation.PopModalAsync();
 
