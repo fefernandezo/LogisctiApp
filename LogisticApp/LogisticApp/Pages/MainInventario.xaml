@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LogisticApp.Pages.MainInventario"
-             Title="Toma de inventario"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <ContentPage.Content>
-        <ListView
-            ItemsSource="{Binding Rutas}"
-            HasUnevenRows="True"
-            >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="8">
-                            <Grid.GestureRecognizers>
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="LogisticApp.Pages.MainInventario"
+			 Title="Toma de inventario"
+			 BindingContext="{Binding Main, Source={StaticResource Locator}}">
+	<ContentPage.Content>
+		<ListView
+			ItemsSource="{Binding Rutas}"
+			HasUnevenRows="True"
+			>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Grid Padding="8">
+							<Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding RutaDetailCommand }"></TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="1">
-                                <Label
+							</Grid.GestureRecognizers>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="10"></ColumnDefinition>
+								<ColumnDefinition Width="*"></ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<StackLayout Grid.Column="1">
+								<Label
 									FontSize="Large"
 									FontAttributes="Bold"
 									VerticalOptions="Center"
 									TextColor="Black"
 									Text="{Binding Nombre}"/>
-                                <Label
+								<Label
 									TextColor="Blue"
 									VerticalOptions="Center"
 									Text="{Binding Descripcion}"/>
-                            </StackLayout>
-                        </Grid>
+							</StackLayout>
+						</Grid>
 
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+			
 
-        </ListView>
-    </ContentPage.Content>
+		</ListView>
+	</ContentPage.Content>
 </ContentPage>

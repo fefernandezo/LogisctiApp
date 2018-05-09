@@ -15,46 +15,46 @@ namespace LogisticApp
 	{
 		#region Propiedades
 		public static NavigationPage Navigator { get; internal set; }
-        public static MasterDetailPage1 Master { get; internal set; }
-        public static LoginResult CurrentUser { get; internal set; }
-        
-        
-        #endregion
+		public static MasterDetailPage1 Master { get; internal set; }
+		public static LoginResult CurrentUser { get; internal set; }
+		
+		
+		#endregion
 
-        #region atributos
+		#region atributos
 
-        private DataService dataService;
-        #endregion
+		private DataService dataService;
+		#endregion
 
-        #region Constructor
-        public App()
-        {
-            InitializeComponent();
-
-
-            dataService = new DataService();
-            var User = dataService.GetUser();
-
-            if(User != null && User.IsRemember)
-            {
-                var mainViewModel = MainViewModel.GetInstance();
-                mainViewModel.LoadUser(User);
-                mainViewModel.Loadrutas(User);
-                App.CurrentUser = User;
-                MainPage = new MasterDetailPage1();
-            }
-            else
-            {
-                MainPage = new Login();
-            }
+		#region Constructor
+		public App()
+		{
+			InitializeComponent();
 
 
-            
-        }
-        #endregion
+			dataService = new DataService();
+			var User = dataService.GetUser();
+
+			if(User != null && User.IsRemember)
+			{
+				var mainViewModel = MainViewModel.GetInstance();
+				mainViewModel.LoadUser(User);
+				mainViewModel.Loadrutas(User);
+				App.CurrentUser = User;
+				MainPage = new MasterDetailPage1();
+			}
+			else
+			{
+				MainPage = new Login();
+			}
 
 
-        protected override void OnStart ()
+			
+		}
+		#endregion
+
+
+		protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}

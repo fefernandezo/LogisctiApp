@@ -5,23 +5,38 @@
              Title="Busqueda de producto"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
+        
         <StackLayout HorizontalOptions="Center"
-                     VerticalOptions="Center"
+                     Padding="80"
                      BindingContext="{Binding CurrentRoute}">
-            <Label Text=""
+            <Label Text="{Binding Nombre}"
                    TextColor="Black"
                    FontSize="Large"
                    HorizontalOptions="Center"></Label>
-            <Button x:Name="BtnManual"
+            <StackLayout
+                Spacing="40"
+                Padding="40"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Button 
+                    FontSize="20"
+                    x:Name="BtnManual"
+                    Clicked="BtnManual_clicked"
                     Text="Manual"
+                        BorderRadius="10"
                     BackgroundColor="GreenYellow"
                     TextColor="White">
-                
-            </Button>
-            <Button x:Name="BtnScanner"
+
+                </Button>
+                <Button
+                    BorderRadius="10"
+                    FontSize="20"
+                    x:Name="BtnScanner"
                     Text="Código de barra"
                     BackgroundColor="Blue"
                     TextColor="White"></Button>
+            </StackLayout>
+            
             
         </StackLayout>
     </ContentPage.Content>

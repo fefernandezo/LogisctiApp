@@ -11,20 +11,22 @@ using Xamarin.Forms.Xaml;
 namespace LogisticApp.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class IngresoProducto : ContentPage
+	public partial class CodigoManual : ContentPage
 	{
-		NavigationService navigationService;
-		public IngresoProducto ()
+        
+        public CodigoManual ()
 		{
 			InitializeComponent ();
 		}
+        private void EntrycodeChanged(object sender, EventArgs e)
+        {
+            
+            var codigo = Entrycodigo.Text.ToUpper();
+            Entrycodigo.Text = codigo;
 
-		private void BtnManual_clicked(object sender, EventArgs e)
-		{
-			navigationService = new NavigationService();
+        }
 
-			navigationService.Navigate("CodigoManual");
-			
-		}
-	}
+        
+        
+    }
 }

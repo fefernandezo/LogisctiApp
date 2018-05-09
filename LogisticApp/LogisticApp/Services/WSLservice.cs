@@ -42,7 +42,7 @@ namespace LogisticApp.Services
                     {
                         IsSuccess = true,
                         Messagge = "Usuario válido",
-                        Nombre = doc.Descendants(ns + "WSL_User").Elements(ns + "Nombre").First().Value,
+                        Nombre = (doc.Descendants(ns + "WSL_User").Elements(ns + "Nombre").First().Value).Trim(),
                         Correo = doc.Descendants(ns + "WSL_User").Elements(ns + "Correo").First().Value,
                         Password = password,
                         UserName = username,
@@ -120,6 +120,65 @@ namespace LogisticApp.Services
             {
 
                 return null;
+            }
+        }
+
+        public async Task<ProductResult> GetProdDetail (string codigo)
+        {
+            try
+            {
+                string BaseUri = "http://e.phglass.cl/ServiciosWeb/WSlogistica.asmx/Producto?codigo=";
+                string Url = codigo;
+
+                Uri geturi = new Uri(BaseUri + Url);
+                HttpClient client1 = new HttpClient();
+
+                HttpResponseMessage responseGet1 = await client1.GetAsync(geturi);
+
+                
+                    string response = await responseGet1.Content.ReadAsStringAsync();
+
+                    XDocument doc = XDocument.Parse(response);
+                    XNamespace ns = "http://www.phglass.cl/";
+
+                var validacion = (doc.Descendants(ns + "WSL_Producto").Elements(ns + "Existe").First().Value).Trim();
+
+                if(validacion=="true")
+                {
+                    return new ProductResult
+                    {
+                        IsSuccess = true,
+                        Codigo = codigo,
+                        Detalle = (doc.Descendants(ns + "WSL_Producto").Elements(ns + "Nombre").First().Value).Trim(),
+                        UnidadMed = (doc.Descendants(ns + "WSL_Producto").Elements(ns + "UnidMed").First().Value).Trim(),
+
+                    };
+                }
+                else
+                {
+                    return new ProductResult
+                    {
+                        IsSuccess = false,
+                        Messagge = "El código no existe en RANDOM",
+
+                    };
+                }
+                    
+               
+
+                
+                
+            }
+            
+            catch (Exception ex)
+            {
+
+                return new ProductResult
+                {
+                    IsSuccess = false,
+                    Messagge = ex.Message + " Problemas de conección",
+
+                };
             }
         }
     }

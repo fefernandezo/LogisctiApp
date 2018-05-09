@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LogisticApp.Pages.IngProdInventario"
+             Title="Producto"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center"
+                     Padding="20"
+                    BindingContext="{Binding NewCodigo}">
+            <Label Text="{Binding Ruta}"
+                   TextColor="Black"
+                   FontSize="Large"
+                   HorizontalOptions="Center"></Label>
+            <Label Text="{Binding DescripcionRuta}"
+                   TextColor="Black"
+                   FontSize="Default"
+                   HorizontalOptions="Center"></Label>
+            <StackLayout
+                Spacing="40"
+                Padding="10"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                 >
+                <Label
+                     Text="{Binding Codigo, Mode=TwoWay}"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    FontSize="Medium"/>
+                <Label
+                     Text="{Binding Detalle, Mode=TwoWay}"
+                    TextColor="Blue"
+                    HorizontalOptions="Center"
+                    FontSize="Medium"/>
+            </StackLayout>
+            <StackLayout 
+                Spacing="40"
+                
+                VerticalOptions="End"
+                HorizontalOptions="Center">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Entry
+                        Text="{Binding Code, Mode=TwoWay}"
+                        
+                        Placeholder="Ingresar"
+                        x:Name="Entrycodigo"
+                        PlaceholderColor="Gray"
+                         TextColor="Blue"
+                        Grid.Column="0"
+                        Keyboard="Numeric"/>
+                    <Label
+                        Text="{Binding UnidadMed, Mode=TwoWay}"
+                        FontSize="Medium"
+                        Grid.Column="1"
+                        VerticalOptions="Center"></Label>
+                </Grid>
+                
+                <Button
+                    Command="{Binding IngresarCommand}"
+                    x:Name="BtnBuscarCod"
+                    Text="Ingresar"
+                    TextColor="White"
+                    
+                    BackgroundColor="Blue"></Button>
+
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

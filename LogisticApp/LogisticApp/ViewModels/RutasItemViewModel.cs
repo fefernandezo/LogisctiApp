@@ -10,7 +10,8 @@ namespace LogisticApp.ViewModels
     {
         #region atributos
         
-        private NavigationService navigationService; 
+        private NavigationService navigationService;
+        public CodigoViewModel codigoViewModel;
         #endregion
 
 
@@ -19,6 +20,7 @@ namespace LogisticApp.ViewModels
         public RutasItemViewModel()
         {
             navigationService = new NavigationService();
+            
         } 
         #endregion
 
@@ -26,7 +28,7 @@ namespace LogisticApp.ViewModels
         #region Commands
         public ICommand RutaDetailCommand { get { return new RelayCommand(RutaDetail); } }
 
-        private async void RutaDetail()
+        private  void RutaDetail()
         {
             var rutaIntemViewModel = new RutasItemViewModel {
                 Nombre = Nombre,
@@ -35,10 +37,15 @@ namespace LogisticApp.ViewModels
                 CodBodega=CodBodega,
 
             };
-
+            var codigoViewModel = new CodigoViewModel {
+                Ruta = Nombre,
+                DescripcionRuta=Descripcion,
+                Code = "",
+            };
             var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.SetCurrentCode(codigoViewModel);
             mainViewModel.SetCurrentRuta(rutaIntemViewModel);
-            await navigationService.Navigate("IngresoProducto");
+             navigationService.Navigate("IngresoProducto");
         }
         #endregion
 

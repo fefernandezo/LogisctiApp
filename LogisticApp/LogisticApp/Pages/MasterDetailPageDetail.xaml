@@ -6,9 +6,9 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
   <StackLayout 
       BindingContext="{Binding UserLoged}"
-      VerticalOptions="CenterAndExpand"
-      Padding="8"
-      Spacing="10">
+      VerticalOptions="Center"
+     
+      >
       
             <Label Text="Bienvenid@"
                    FontSize="18"

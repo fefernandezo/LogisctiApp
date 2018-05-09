@@ -31,6 +31,9 @@ namespace LogisticApp.ViewModels
 
         public RutasItemViewModel CurrentRoute { get; set; }
 
+
+        
+        public CodigoViewModel NewCodigo { get; set; }
         
 
 
@@ -50,6 +53,7 @@ namespace LogisticApp.ViewModels
             NewLogin = new LoginViewModel();
             dialogService = new DialogService();
             CurrentRoute = new RutasItemViewModel();
+            NewCodigo = new CodigoViewModel();
 
             
 
@@ -66,6 +70,8 @@ namespace LogisticApp.ViewModels
 
         }
 
+       
+
 
 
         #endregion
@@ -77,6 +83,11 @@ namespace LogisticApp.ViewModels
         {
             CurrentRoute = rutaIntemViewModel;
            
+        }
+
+        public void SetCurrentCode(CodigoViewModel codigoViewModel)
+        {
+            NewCodigo = codigoViewModel;
         }
 
 

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LogisticApp.Pages.CodigoManual"
+             Title="Código Manual"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+
+        <StackLayout HorizontalOptions="Center"
+                     Padding="20"
+                    BindingContext="{Binding NewCodigo}">
+            <Label Text="{Binding Ruta}"
+                   TextColor="Black"
+                   FontSize="Large"
+                   HorizontalOptions="Center"></Label>
+            <Label Text="{Binding DescripcionRuta}"
+                   TextColor="Black"
+                   FontSize="Default"
+                   HorizontalOptions="Center"></Label>
+            <StackLayout
+                Spacing="40"
+                Padding="60"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                 >
+                <Entry
+                     Text="{Binding Code, Mode=TwoWay}"
+            TextChanged="EntrycodeChanged"
+            Placeholder="Ingresar código"
+                x:Name="Entrycodigo"
+                    PlaceholderColor="Gray"
+            TextColor="Blue"/>
+                <Button
+                    Command="{Binding BuscarCodigoCommand}"
+                    x:Name="BtnBuscarCod"
+                    Text="Buscar"
+                    TextColor="White"
+                    
+                    BackgroundColor="Blue"></Button>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
