@@ -8,8 +8,9 @@
         
         <StackLayout HorizontalOptions="Center"
                      Padding="80"
-                     BindingContext="{Binding CurrentRoute}">
-            <Label Text="{Binding Nombre}"
+                      BindingContext="{Binding NewCodigo}">
+            
+            <Label Text="{Binding Ruta}"
                    TextColor="Black"
                    FontSize="Large"
                    HorizontalOptions="Center"></Label>
@@ -32,6 +33,7 @@
                     BorderRadius="10"
                     FontSize="20"
                     x:Name="BtnScanner"
+                    Clicked="BtnScanner_clicked"
                     Text="Código de barra"
                     BackgroundColor="Blue"
                     TextColor="White"></Button>

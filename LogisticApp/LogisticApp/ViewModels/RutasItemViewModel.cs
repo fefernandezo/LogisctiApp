@@ -4,6 +4,7 @@ using LogisticApp.Services;
 using System;
 using System.Windows.Input;
 
+
 namespace LogisticApp.ViewModels
 {
     public class RutasItemViewModel : RutasResult
@@ -27,6 +28,8 @@ namespace LogisticApp.ViewModels
 
         #region Commands
         public ICommand RutaDetailCommand { get { return new RelayCommand(RutaDetail); } }
+
+       
 
         private  void RutaDetail()
         {

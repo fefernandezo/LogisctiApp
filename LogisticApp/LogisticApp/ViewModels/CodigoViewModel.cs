@@ -1,10 +1,9 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using LogisticApp.Models;
 using LogisticApp.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
+using ZXing.Net.Mobile.Forms;
 
 namespace LogisticApp.ViewModels
 {
@@ -43,6 +42,40 @@ namespace LogisticApp.ViewModels
 
         public ICommand BuscarCodigoCommand { get { return new RelayCommand(Buscarcod); } }
 
+       
+
+        public async void Scanner(string codigo)
+        {
+            Code = codigo;
+
+            var Detailcod = await wSLservice.GetProdDetail(Code);
+
+            if (Detailcod.IsSuccess)
+            {
+                var codigoView = new CodigoViewModel
+                {
+                    Codigo = Detailcod.Codigo,
+                    Detalle = Detailcod.Detalle,
+                    UnidadMed = Detailcod.UnidadMed,
+                    Ruta = Ruta,
+                    DescripcionRuta = DescripcionRuta,
+
+                };
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.SetCurrentCode(codigoView);
+                navigationService = new NavigationService();
+
+                navigationService.Navigate("IngProdInventario");
+            }
+            else
+            {
+                await dialogService.Showmessage("Error", Detailcod.Messagge);
+            }
+
+
+
+        }
+
         public async void Buscarcod()
         {
             
@@ -70,6 +103,8 @@ namespace LogisticApp.ViewModels
                 await dialogService.Showmessage("Error", Detailcod.Messagge);
             }
         }
+
+       
         #endregion
     }
 }

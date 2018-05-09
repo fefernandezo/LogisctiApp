@@ -56,6 +56,7 @@ namespace LogisticApp.Services
                 case "CodigoManual":
                     var page2 = (Page)Activator.CreateInstance(typeof(CodigoManual));
                     App.Master.Detail = new NavigationPage(page2);
+                    
                     break;
                 case "IngProdInventario":
                     var page3 = (Page)Activator.CreateInstance(typeof(IngProdInventario));
