@@ -44,10 +44,10 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Entry
-                        Text="{Binding Code, Mode=TwoWay}"
+                        Text="{Binding Cant, Mode=TwoWay}"
                         
                         Placeholder="Ingresar"
-                        x:Name="Entrycodigo"
+                        x:Name="Cant"
                         PlaceholderColor="Gray"
                          TextColor="Blue"
                         Grid.Column="0"

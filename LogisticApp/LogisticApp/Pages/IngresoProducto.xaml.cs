@@ -1,5 +1,6 @@
 ﻿using LogisticApp.Services;
 using LogisticApp.ViewModels;
+using Plugin.Vibrate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace LogisticApp.Pages
 	public partial class IngresoProducto : ContentPage
 	{
 		NavigationService navigationService;
-        CodigoViewModel codigoViewModel;
+		CodigoViewModel codigoViewModel;
 		public IngresoProducto ()
 		{
 			InitializeComponent ();
@@ -24,36 +25,40 @@ namespace LogisticApp.Pages
 
 		private void BtnManual_clicked(object sender, EventArgs e)
 		{
+			
+
 			navigationService = new NavigationService();
 
 			navigationService.Navigate("CodigoManual");
-            
+			
 			
 		}
 
-       
+	   
 
-        private async void BtnScanner_clicked(object sender, EventArgs e)
-        {
-            codigoViewModel = new CodigoViewModel();
+		private async void BtnScanner_clicked(object sender, EventArgs e)
+		{
+			codigoViewModel = new CodigoViewModel();
 
-            var scanPage = new ZXingScannerPage();
-            scanPage.OnScanResult += (result) => {
-                //stop scanning
-                scanPage.IsScanning = false;
+			var scanPage = new ZXingScannerPage();
+			scanPage.OnScanResult += (result) => {
+				//stop scanning
+				scanPage.IsScanning = false;
 
-                //pop the page and show result
-                Device.BeginInvokeOnMainThread(async() =>
-                {
-                    
-                    codigoViewModel.Scanner(result.Text);
-                    await Navigation.PopModalAsync();
+				//pop the page and show result
+				Device.BeginInvokeOnMainThread(async() =>
+				{
+					var v = CrossVibrate.Current;
+					v.Vibration(TimeSpan.FromSeconds(0.2));
 
-                });
-            };
+					codigoViewModel.Scanner(result.Text);
+					await Navigation.PopModalAsync();
 
-            //navega hacia la scannerpage
-            await Navigation.PushModalAsync(scanPage);
-        }
-    }
+				});
+			};
+
+			//navega hacia la scannerpage
+			await Navigation.PushModalAsync(scanPage);
+		}
+	}
 }

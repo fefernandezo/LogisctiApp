@@ -148,7 +148,7 @@ namespace LogisticApp.Services
                     return new ProductResult
                     {
                         IsSuccess = true,
-                        Codigo = codigo,
+                        Codigo = (doc.Descendants(ns + "WSL_Producto").Elements(ns + "Codigo").First().Value).Trim(),
                         Detalle = (doc.Descendants(ns + "WSL_Producto").Elements(ns + "Nombre").First().Value).Trim(),
                         UnidadMed = (doc.Descendants(ns + "WSL_Producto").Elements(ns + "UnidMed").First().Value).Trim(),
 
@@ -174,6 +174,66 @@ namespace LogisticApp.Services
             {
 
                 return new ProductResult
+                {
+                    IsSuccess = false,
+                    Messagge = ex.Message + " Problemas de conección",
+
+                };
+            }
+        }
+
+        public async Task<IngElemInventoryConfirm> IngProdInvConfirm(string Idasign, string User, string Kopr, string Cant, string Unit)
+        {
+
+            try
+            {
+                var Token = "BaPRiThWJLYvy3KOn04K43we4XtyMdJIiYzqFwvLH0";
+                string BaseUri = "http://e.phglass.cl/ServiciosWeb/WSlogistica.asmx/IngresoInventario?Idasign=";
+                string Url = Idasign + "&User=" + User + "&Kopr=" + Kopr + "&Cant=" + Cant.Replace(",",".") + "&Unit=" + Unit +"&Token=" + Token;
+
+                Uri geturi = new Uri(BaseUri + Url);
+                HttpClient client1 = new HttpClient();
+
+                HttpResponseMessage responseGet1 = await client1.GetAsync(geturi);
+
+
+                string response = await responseGet1.Content.ReadAsStringAsync();
+
+                XDocument doc = XDocument.Parse(response);
+                XNamespace ns = "http://www.phglass.cl/";
+
+                var validacion = (doc.Descendants(ns + "WSL_IngProdInventory").Elements(ns + "Validate").First().Value).Trim();
+
+                if (validacion == "true")
+                {
+                    return new IngElemInventoryConfirm
+                    {
+                        IsSuccess = true,
+                       IdTable = (doc.Descendants(ns + "WSL_IngProdInventory").Elements(ns + "IdOperacion").First().Value).Trim(),
+                       
+
+                    };
+                }
+                else
+                {
+                    return new IngElemInventoryConfirm
+                    {
+                        IsSuccess = false,
+                        Messagge = "Problemas al ingresar el producto",
+
+                    };
+                }
+
+
+
+
+
+            }
+
+            catch (Exception ex)
+            {
+
+                return new IngElemInventoryConfirm
                 {
                     IsSuccess = false,
                     Messagge = ex.Message + " Problemas de conección",

@@ -13,6 +13,8 @@ namespace LogisticApp.ViewModels
         
         private NavigationService navigationService;
         public CodigoViewModel codigoViewModel;
+        private DataService dataService;
+       
         #endregion
 
 
@@ -21,6 +23,7 @@ namespace LogisticApp.ViewModels
         public RutasItemViewModel()
         {
             navigationService = new NavigationService();
+            dataService = new DataService();
             
         } 
         #endregion
@@ -44,7 +47,20 @@ namespace LogisticApp.ViewModels
                 Ruta = Nombre,
                 DescripcionRuta=Descripcion,
                 Code = "",
+                IdAsignRuta = IdRuta.ToString(),
             };
+
+            var tempinvent = new TempInvent
+            {
+                IdAsignRuta = IdRuta,
+                Code = "",
+                Ruta=Nombre,
+                DescripcionRuta=Descripcion,
+                Cant="",
+
+
+            };
+            var ruta = dataService.InsertTempinv(tempinvent);
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.SetCurrentCode(codigoViewModel);
             mainViewModel.SetCurrentRuta(rutaIntemViewModel);

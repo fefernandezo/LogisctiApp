@@ -22,7 +22,8 @@ namespace LogisticApp.Data
             connection = new SQLiteConnection(config.Platform,
                 System.IO.Path.Combine(config.DirectoryDB, "LogisticApp.db3"));
             connection.CreateTable<LoginResult>();
-            connection.CreateTable<RutasResult>();
+            connection.CreateTable<TempInvent>();
+            
 
         }
 

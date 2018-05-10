@@ -43,7 +43,7 @@ namespace LogisticApp.Services
             return App.CurrentUser;
         }
 
-        public async void Navigate(string pageName)
+        public void Navigate(string pageName)
         {
             App.Master.IsPresented = false;
 
@@ -54,9 +54,9 @@ namespace LogisticApp.Services
                     App.Master.Detail = new NavigationPage(page);
                     break;
                 case "CodigoManual":
-                    //var page2 = (Page)Activator.CreateInstance(typeof(CodigoManual));
-                    //App.Master.Detail = new NavigationPage(page2);
-                    await App.Navigator.PushAsync(new CodigoManual());
+                    var page2 = (Page)Activator.CreateInstance(typeof(CodigoManual));
+                    App.Master.Detail = new NavigationPage(page2);
+                    
                     break;
                 case "IngProdInventario":
                     var page3 = (Page)Activator.CreateInstance(typeof(IngProdInventario));

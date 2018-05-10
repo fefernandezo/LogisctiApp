@@ -17,6 +17,14 @@ namespace LogisticApp.Services
             }
         }
 
+        public TempInvent GetTempInvent()
+        {
+            using (var da2 = new DataAccess())
+            {
+                return da2.First<TempInvent>(false);
+            }
+        }
+
         public Response UpdateUser(LoginResult user)
         {
             try
@@ -31,6 +39,34 @@ namespace LogisticApp.Services
                     IsSuccess = true,
                     Messagge = "Usuario Actualizado OK,",
                     Result = user,
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Messagge = ex.Message,
+                };
+
+            }
+        }
+
+        public Response UpdateTempInvent(TempInvent tempInvent)
+        {
+            try
+            {
+                using (var da3 = new DataAccess())
+                {
+
+                    da3.Update(tempInvent);
+                }
+                return new Response
+                {
+                    IsSuccess = true,
+                    Messagge = "Usuario Actualizado OK,",
+                    Result = tempInvent,
                 };
 
             }
@@ -71,6 +107,37 @@ namespace LogisticApp.Services
                 {
                     IsSuccess = false,
                     Messagge=ex.Message,
+                };
+            }
+        }
+
+        public Response InsertTempinv(TempInvent tempInvent)
+        {
+            try
+            {
+                using (var da = new DataAccess())
+                {
+                    var oldtemp = da.First<TempInvent>(false);
+                    if (oldtemp != null)
+                    {
+                        da.Delete(oldtemp);
+                    }
+                    da.Insert(tempInvent);
+                }
+                return new Response
+                {
+                    IsSuccess = true,
+                    Messagge = "Usuario Insertado OK,",
+                    Result = tempInvent,
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Messagge = ex.Message,
                 };
             }
         }
